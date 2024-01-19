@@ -39,7 +39,7 @@ void main() {
     final result = await usecases();
 
     //assert
-    expect(result, tMoviesList);
+    expect(result, equals(Right(tMoviesList)));
     verify(mockMovieRepository.getTrendingMovies());
     verifyNoMoreInteractions(mockMovieRepository);
   });
