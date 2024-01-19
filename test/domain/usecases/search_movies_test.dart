@@ -5,7 +5,7 @@ import 'package:mockito/mockito.dart';
 import 'package:movie_app/domain/entities/Movie.dart';
 import 'package:movie_app/domain/repositories/movie_repository.dart';
 import 'package:movie_app/domain/usecases/search_movie.dart';
-import 'get_trending_movies_test.mocks.dart';
+import 'get_popular_movies_test.mocks.dart';
 
 @GenerateNiceMocks([MockSpec<MovieRepository>()])
 void main() {
@@ -41,8 +41,10 @@ void main() {
     final result = await usecase(tQuery);
 
     //assert
-    expect(result, tMoviesList);
+    expect(result, equals(Right(tMoviesList)));
     verify(mockMovieRepository.searchMovies(tQuery));
     verifyNoMoreInteractions(mockMovieRepository);
   });
 }
+
+
