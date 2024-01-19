@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -34,7 +35,7 @@ void main() {
   test('should get movies movies from the query from the repository', () async {
     //arrange
     when(mockMovieRepository.searchMovies(any))
-        .thenAnswer((_) async => tMoviesList);
+        .thenAnswer((_) async => Right(tMoviesList));
 
     //act
     final result = await usecase(tQuery);

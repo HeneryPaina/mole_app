@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -32,7 +33,7 @@ void main() {
   test('should get popular movies from the repository', () async {
     //arrange
     when(mockMovieRepository.getPopularMovies())
-        .thenAnswer((_) async => tMoviesList);
+        .thenAnswer((_) async => Right(tMoviesList));
 
     //act
     final result = await usecases();
