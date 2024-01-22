@@ -6,7 +6,7 @@ import 'package:movie_app/core/errors/server_exception.dart';
 import 'package:movie_app/core/errors/server_failure.dart';
 import 'package:movie_app/data/datasources/movie_remote_data_source.dart';
 import 'package:movie_app/data/models/movie_model.dart';
-import 'package:movie_app/data/repositories/movie_respository_impl.dart';
+import 'package:movie_app/data/repositories/movie_repository_impl.dart';
 import 'package:movie_app/domain/entities/Movie.dart';
 import 'movie_repository_impl_test.mocks.dart';
 
