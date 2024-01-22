@@ -33,4 +33,45 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
       ),
     );
   }
+
+
+  Widget _buildBody() {
+    switch (_selectedIndex) {
+      case 0:
+        return Center(child: HomeScreen());
+      case 1:
+        return Center(child: MoviesScreen());
+      case 2:
+        return Center(child: PerfilScreen());
+      default:
+        return Center(child: Text('Unknown Screen'));
+    }
+  }
+
+  Widget buildBottomNavItem(
+      IconData icon,
+      String label,
+      int index,
+      double textScale,
+      ) {
+    final isSelected = _selectedIndex == index;
+
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        IconButton(
+          icon: Icon(
+            icon,
+            size: isSelected ? 30.0 * textScale : 25.0 * textScale,
+          ),
+          color: isSelected ? Colors.red : Colors.grey,
+          onPressed: () {
+            setState(() {
+              _selectedIndex = index;
+            });
+          },
+        ),
+      ],
+    );
+  }
 }
