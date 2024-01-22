@@ -9,7 +9,7 @@ class MovieRemoteDataSourceImpl implements MovieRemoteDataSource {
 
   MovieRemoteDataSourceImpl({required this.client});
   static const BASE_URL = "https://api.themoviedb.org/3";
-  static const API_KEY = "47d6b785987e7caa9a120e600c6d7632";
+  static const API_KEY = "2a017f0b8633976178cac2fbae513291";
 
   @override
   Future<List<MovieModel>> getPopularMovies() async {
