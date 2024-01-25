@@ -16,29 +16,36 @@ class MovieCard extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10.0),
       ),
-      child: Column(
-        children: [
-          SizedBox(
-            height: 200,
-            width: 130,
-            child: Ink.image(
-              image: NetworkImage(
-                  'https://image.tmdb.org/t/p/w500/${movie.posterPath}'),
-              fit: BoxFit.cover,
+      child: Container(
+        width: 130,
+        child: Column(
+          children: [
+            SizedBox(
+              height: 200,
+              width: 130,
+              child: Ink.image(
+                image: NetworkImage(
+                    'https://image.tmdb.org/t/p/w500/${movie.posterPath}'),
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-          Text(
-            movie.title,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: const TextStyle(
-              fontSize: 14.0,
-              fontFamily: 'NotoSans',
-              color: Colors.grey,
-              fontWeight: FontWeight.w500,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 9.0),
+              child: Text(
+                movie.title,
+                maxLines: 2,
+                textAlign: TextAlign.left,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                  fontSize: 14.0,
+                  fontFamily: 'NotoSans',
+                  color: Colors.grey,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
