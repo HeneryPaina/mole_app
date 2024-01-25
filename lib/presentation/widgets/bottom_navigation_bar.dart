@@ -40,7 +40,7 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
       case 0:
         return Center(child: HomeScreen());
       case 1:
-        return Center(child: MoviesScreen());
+        return Center(child: PopularMoviesScreen());
       case 2:
         return Center(child: PerfilScreen());
       default:
