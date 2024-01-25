@@ -122,6 +122,45 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ],
           ),
+          Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 25,left: 8, right: 8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Popular",
+                      style: TextStyle(
+                          fontFamily: 'NotoSans', color: Colors.white),
+                    ),
+                    TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        "View all",
+                        style: TextStyle(
+                            fontFamily: 'NotoSans',
+                            color: Colors.red,
+                            fontWeight: FontWeight.w500),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              BlocBuilder<PopularMoviesBloc, PopularMoviesState>(
+                builder: (context, state) {
+                  if (state is PopularMoviesLoading) {
+                    return CircularProgressIndicator();
+                  } else if (state is PopularMoviesLoaded) {
+                    return MoviesList(movies: state.movies);
+                  } else if (state is PopularMoviesError) {
+                    return Text(state.message);
+                  }
+                  return Container();
+                },
+              ),
+            ],
+          ),
         ],
       ),
     );
