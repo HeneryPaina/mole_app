@@ -3,7 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/popular_movies/popular_movies_bloc.dart';
 import '../bloc/popular_movies/popular_movies_state.dart';
+import '../bloc/trending_movies/trending_movies_bloc.dart';
+import '../bloc/trending_movies/trending_movies_state.dart';
 import '../widgets/carousel_slider_widget.dart';
+import 'movies_list.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -80,7 +83,45 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ],
           ),
-
+          Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 8, right: 8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Trending",
+                      style: TextStyle(
+                          fontFamily: 'NotoSans', color: Colors.white),
+                    ),
+                    TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        "View all",
+                        style: TextStyle(
+                            fontFamily: 'NotoSans',
+                            color: Colors.red,
+                            fontWeight: FontWeight.w500),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              BlocBuilder<TrendingMoviesBloc, TrendingMoviesState>(
+                builder: (context, state) {
+                  if (state is TrendingMoviesLoading) {
+                    return CircularProgressIndicator();
+                  } else if (state is TrendingMoviesLoaded) {
+                    return MoviesList(movies: state.movies);
+                  } else if (state is TrendingMoviesError) {
+                    return Text(state.message);
+                  }
+                  return Container();
+                },
+              ),
+            ],
+          ),
         ],
       ),
     );
